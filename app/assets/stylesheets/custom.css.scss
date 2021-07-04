@@ -1,0 +1,37 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+.navbar {
+  background-color: black !important;
+}
+
+.nav-link {
+  color: pink !important;
+}
+     
+#title {
+  color: rgb(209, 207, 207);
+}
+
+#logo {
+  color: pink !important;
+  float: left;
+  font-size: 1.7em;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+#home-container {
+  background-image: asset-url('alphabloghomeimage.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 425px;
+}
+
+#mainDiv {
+  display: flex; 
+  flex-direction: column;
+  padding: 60px 15px 15px;
+  padding-top: 100px;
+}

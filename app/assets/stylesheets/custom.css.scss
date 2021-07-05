@@ -1,7 +1,12 @@
 @import 'bootstrap/dist/css/bootstrap';
 
+header {
+  min-height: 65px;
+}
+
 .navbar {
   background-color: black !important;
+  min-height: 50px;
 }
 
 .nav-link {

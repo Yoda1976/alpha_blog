@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   
   # Routes for ARTICLES
   resources :articles
+
+    # Routes for CATERGORIES
+    resources :categories, except: [:destroy]
 end

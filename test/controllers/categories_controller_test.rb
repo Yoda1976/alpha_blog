@@ -3,6 +3,8 @@ require "test_helper"
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @category = Category.create(name: "Other")
+    @admin_user = User.create(username: "yoda", email: "a@a.com",
+                              password: "123456", admin: true)
   end
 
   test "should get index" do
@@ -11,16 +13,30 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
+    #Due to the test "should not create category if not admin" below, 
+    #in order this test to pass an admin user must be signed-in. sign_in_as defined in
+    #test/test_helper.rb
+    sign_in_as(@admin_user)
     get new_category_url
     assert_response :success
   end
 
   test "should create category" do
+    #Same as above
+    sign_in_as(@admin_user)
     assert_difference('Category.count', 1) do
       post categories_url, params: { category: { name: "Travel" } }
     end
 
     assert_redirected_to category_url(Category.last)
+  end
+
+  test "should not create category if not admin" do
+    assert_no_difference('Category.count') do
+      post categories_url, params: { category: { name: "Travel" } }
+    end
+
+    assert_redirected_to categories_url
   end
 
   test "should show category" do
